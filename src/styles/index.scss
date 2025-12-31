@@ -2,7 +2,8 @@ $day-size: 100px;
 $gap: 1px;
 $cols: 7;
 $padding: 10px;
-$container-width: $cols * $day-size + ($cols - 1) * $gap + 2 * $padding;
+$number-property: 30px;
+$container-width: $cols * $day-size + ($cols - 1) * $gap;
 $start-days: 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun';
 
 @use 'sass:list';
@@ -19,6 +20,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: $container-width;
+  padding: 10px;
   gap: 1px;
 }
 
@@ -27,8 +29,8 @@ body {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  width: 100px;
-  height: 100px;
+  width: $day-size;
+  height: $day-size;
   border: 1px solid #000;
   outline: none;
   background-color: #eee;
@@ -44,11 +46,9 @@ body {
 @for $num from 1 through 31 {
   .calendar__day:nth-child(#{$num})::before {
     content: '#{$num}';
-    height: 30px;
-    width: 30px;
+    text-align: center;
     font-family: Arial, sans-serif;
-    font-weight: 700;
-    font-size: 30px;
+    font-size: $number-property;
     color: #000;
   }
 }
